@@ -1,0 +1,41 @@
+@import 'reset.scss';
+
+// variables
+$primary-background-color: #ffff00;
+
+
+//maps
+
+$font-weights: (
+    "regular": 400,
+    "medium": 500,
+    "bold": 700,
+);
+
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction
+}
+@function weight($weight-name) {
+    @return map-get($font-weights, $weight-name);
+}
+
+body {
+    background: $primary-background-color;
+    font-weight: map-get($font-weights , "bold");
+}
+
+.main {
+    @include flexCenter(row);
+    width: 80%;
+    margin: 0 auto;
+
+    #{&}__paragraph {
+        font-weight: weight(regular);
+        &:hover {
+            color: aqua;
+        }
+    }
+}
